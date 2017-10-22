@@ -1,0 +1,1 @@
+some Git Bash scripts to help with wordpress development

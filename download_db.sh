@@ -1,5 +1,5 @@
 # Depends on WP-CLI for safe search-replace in the Database http://wp-cli.org/
-# Your SSH server needs to be trusted. https://www.clearos.com/resources/documentation/clearos/content:en_us:kb_o_setting_up_ssh_trust_between_two_servers
+# Your SSH server needs to be trusted. https://askubuntu.com/questions/46930/how-can-i-set-up-password-less-ssh-login
 
 # Local site
 local_wp_dir='/c/xampp/htdocs/mysite' # WP dir

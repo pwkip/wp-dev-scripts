@@ -1,5 +1,7 @@
 # Depends on WP-CLI for safe search-replace in the Database http://wp-cli.org/
-# Your SSH server needs to be trusted. https://askubuntu.com/questions/46930/how-can-i-set-up-password-less-ssh-login
+# Your SSH server needs to be trusted. https://www.clearos.com/resources/documentation/clearos/content:en_us:kb_o_setting_up_ssh_trust_between_two_servers
+
+# NOTE: I tried downloading uploads with rsync instead of scp but looks like it is not possible to install rsync on windows at the moment (24oct2017)
 
 # Local site
 local_wp_dir='/c/xampp/htdocs/mysite' # WP dir
@@ -48,4 +50,11 @@ mysql -h ${local_db_host} -u ${local_db_user} --password=${local_db_pwd} ${local
 # Perform safe find and replace in the local database
 wp search-replace $find $replace
 
-read -rsp $'All done. Press enter to continue...'
+read -rsp $'DB Installed. Press enter to download uploaded files ...'
+echo ''
+
+scp -r ${ssh_user}@${ssh_host}:${live_wp_dir}/wp-content/uploads ${local_wp_dir}/wp-content/uploads
+#rsync rsync -aur ${local_wp_dir}/wp-content/uploads ${ssh_user}@${ssh_host}:${live_wp_dir}/wp-content/uploads
+
+read -rsp $'All done ...'
+echo ''
